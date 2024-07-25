@@ -1,0 +1,54 @@
+<Response>
+    <Say>Hello, please answer the following questions.</Say>
+    <Start>
+        <Stream url="wss://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/media" track="inbound"/>
+    </Start>
+    
+    <!-- Question 1 -->
+    <Say>Question 1: How are you feeling today?</Say>
+    <Record 
+        transcribe="true" 
+        transcribeCallback="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/transcribe?question=1" 
+        maxLength="30" 
+        action="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/ask-question?index=2"
+        finishOnKey="#"/>
+    
+    <!-- Question 2 -->
+    <Say>Question 2: Are you experiencing any pain?</Say>
+    <Record 
+        transcribe="true" 
+        transcribeCallback="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/transcribe?question=2" 
+        maxLength="30" 
+        action="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/ask-question?index=3"
+        finishOnKey="#"/>
+    
+    <!-- Question 3 -->
+    <Say>Question 3: Have you taken your medication today?</Say>
+    <Record 
+        transcribe="true" 
+        transcribeCallback="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/transcribe?question=3" 
+        maxLength="30" 
+        action="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/ask-question?index=4"
+        finishOnKey="#"/>
+    
+    <!-- Question 4 -->
+    <Say>Question 4: Have you had any side effects from your medication?</Say>
+    <Record 
+        transcribe="true" 
+        transcribeCallback="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/transcribe?question=4" 
+        maxLength="30" 
+        action="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/ask-question?index=5"
+        finishOnKey="#"/>
+    
+    <!-- Question 5 -->
+    <Say>Question 5: Do you need to speak to a healthcare provider?</Say>
+    <Record 
+        transcribe="true" 
+        transcribeCallback="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/transcribe?question=5" 
+        maxLength="30" 
+        action="https://webhook.site/74c50928-eed8-47b9-bd81-897b80863a1d/end-call"
+        finishOnKey="#"/>
+    
+    <!-- End of Questions -->
+    <Say>Thank you for your responses. Goodbye.</Say>
+</Response>
