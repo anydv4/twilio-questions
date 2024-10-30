@@ -12,10 +12,14 @@ app.get('/proxy', async (req, res) => {
     }
     try {
         const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Fetch error: ${response.status} ${response.statusText}`);
+        }
         const data = await response.json();
         res.json(data);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching data' });
+        console.error('Error in proxy:', error); // This will be shown in Vercel logs
+        res.status(500).json({ error: 'Error fetching data', details: error.message });
     }
 });
 
